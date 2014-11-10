@@ -70,6 +70,9 @@ if ( class_exists( 'WPSEO_Metabox' ) && ! class_exists( 'WPSEO_Metabox_wpSEOyoas
 			// Remove action form the parent class
 			remove_action( 'post_submitbox_misc_actions', array( $GLOBALS['old_wpseo_metabox']  , 'publish_box' ));
 			
+			// Remove action to avoid duplicate actions in bulk actions
+			remove_action( 'restrict_manage_posts', array( $GLOBALS['old_wpseo_metabox'] , 'posts_filter_dropdown' ));
+			
 			$post_types = get_post_types( array( 'public' => true ), 'names' );
 			if ( is_array( $post_types ) && $post_types !== array() ) {
 				foreach ( $post_types as $pt ) {
