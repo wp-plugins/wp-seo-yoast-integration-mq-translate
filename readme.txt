@@ -49,6 +49,10 @@ I’ve open a project in my github profile. Feel free to fork and change the cod
 = 0.1 =
 * Realeased Alpha.
 
+= 0.1.1 =
+* Correct Jquery when updated title to avoid bug in empty page
+* Correct duplicate Bulk actions
+* Add tips to warn the users
 
 == Upgrade Notice ==
 
