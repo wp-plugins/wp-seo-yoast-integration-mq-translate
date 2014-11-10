@@ -147,7 +147,18 @@ if ( class_exists( 'WPSEO_Metabox' ) && ! class_exists( 'WPSEO_Metabox_wpSEOyoas
 
 			$options = WPSEO_Options::get_all();
 			
-			?> <div class="wpseo-metabox-tabs-div">  
+			
+			?> 
+				<div class="attention">
+					<h2> <?php echo __("Tips to use WP SEO by Yoast Integration with mqtranslate") ?></h2>
+					<ul>
+						<li><?php echo __("The plugin starts to work when you fill fields.")?></li>
+						<li><?php echo __("This plugin is an Alpha Version. It needs test.")?></li>
+						<li><?php echo __("If you find a bug or you want to improve the plugin, please, report it in the <a href=\"https://wordpress.org/support/plugin/wp-seo-yoast-integration-mq-translate\">support forum</a>.")?></li>
+					</ul>
+				</div>
+			
+				<div class="wpseo-metabox-tabs-div">  
 					<ul class="wpseo-metabox-select-langs-tabs">
 			<?php 
 			// Header of tabs
