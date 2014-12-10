@@ -452,7 +452,8 @@ jQuery(document).ready(function () {
 	
 	
 	// Metabox langs TABS
-	intgr_yst_languages_tabs();
+	// intgr_yst_languages_tabs();
+	jQuery("#wpseo-metabox-tabs-div").tabs();
 
 });
 

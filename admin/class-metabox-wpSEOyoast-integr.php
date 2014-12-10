@@ -47,13 +47,14 @@ if ( class_exists( 'WPSEO_Metabox' ) && ! class_exists( 'WPSEO_Metabox_wpSEOyoas
 			
 			if ( $pagenow != 'edit.php' ) {
 				
-				wp_enqueue_style( 'metabox-integration', plugins_url(  '/' . IYWSM . '/css/metabox-integration' . '.css' ), array(), WPSEO_VERSION );
+				wp_enqueue_style( 'metabox-integration', plugins_url(  '/' . IYWSM . '/css/metabox-integration' . '.css' ), array(), IYWSM_VERSION );
 				
 				wp_enqueue_script( 'wp-seo-metabox_integration', plugins_url( '/' . IYWSM . '/js/wp-seo-metabox_integration'  . '.js'), array(
 				'jquery',
 				'jquery-ui-core',
 				'jquery-ui-autocomplete',
-				), WPSEO_VERSION, true );
+				'jquery-ui-tabs',
+				), IYWSM_VERSION , true );
 			
 				
 				// Text strings to pass to metabox for keyword analysis
@@ -161,14 +162,14 @@ if ( class_exists( 'WPSEO_Metabox' ) && ! class_exists( 'WPSEO_Metabox_wpSEOyoas
 					</ul>
 				</div>
 			
-				<div class="wpseo-metabox-tabs-div">  
-					<ul class="wpseo-metabox-select-langs-tabs">
+				<div class="wpseo-metabox-tabs-div" id="wpseo-metabox-tabs-div">  
+					<ul class="wpseo-metabox-select-langs-tabs" id="wpseo-metabox-select-langs-tabs">
 			<?php 
 			// Header of tabs
 			foreach ($this->langs as $l){
 				?>
 					<li class="wpseo-lang-<?php echo $l ?>">
-						<a class="wpseo_tablink_lang" tab="#wpseo-metabox-lang-tabs-div-<?php echo $l ?>">
+						<a class="wpseo_tablink_lang" tab="#wpseo-metabox-lang-tabs-div-<?php echo $l ?>" href="#wpseo-metabox-lang-tabs-div-<?php echo $l ?>">
 							<?php echo '<img src="' . trailingslashit(WP_CONTENT_URL) . $q_config['flag_location'] . $q_config['flag'][$l] . '" alt="' . $q_config['language_name'][$l] . '"/>'; ?>
 							<?php echo qtrans_getLanguageName($l) ?>
 						</a>
