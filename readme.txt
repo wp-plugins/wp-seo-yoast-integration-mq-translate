@@ -34,11 +34,11 @@ xml sitemap called *page-es* and other called *page-en*.
 = What’s going on if i deactivate the Wordpress SEO by Yoast plugin or mqtranslate plugin? =
 
 The plugin depends on these modules or plugins for a correct behaviour because the plugin overwrite some classes to add functionality. 
-If you deactive one (or both) plugins, the Wordpress SEO integration will try load the plugins, but this could cause  unpredictable behaviour.
+If you deactive one (or both) plugins, the Wordpress SEO integration will try load the plugins, but this could cause unpredictable behaviour.
 
 = How do i contribute to this plugin? =
 
-I’ve open a project in my github profile. Feel free to fork and change the code.
+Ive open a project in my github profile. Feel free to fork and change the code.
 
 == Screenshots ==
 
@@ -53,6 +53,10 @@ I’ve open a project in my github profile. Feel free to fork and change the cod
 * Correct Jquery when updated title to avoid bug in empty page
 * Correct duplicate Bulk actions
 * Add tips to warn the users
+
+= 0.1.2 =
+* Fix error load css & js
+* Add Jquery ui tabs
 
 == Upgrade Notice ==
 
