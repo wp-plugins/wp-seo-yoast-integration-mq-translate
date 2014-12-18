@@ -1,10 +1,10 @@
 === Plugin Name ===
 Contributors: rufein
 Donate link: http://funkydrop.net/
-Tags: integration, qtranslate, mqtranslate, seo, yoast, meta, sitemaps, sitemap, language, title
+Tags: integration, qtranslate, mqtranslate, seo, yoast, meta, sitemaps, sitemap, sitemaps, language, title
 Requires at least: 4.0
-Tested up to: 4.0
-Stable tag: 4.0
+Tested up to: 4.0.1
+Stable tag: 0.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,7 +31,7 @@ xml sitemap called *page-es* and other called *page-en*.
 
 == Frequently Asked Questions ==
 
-= What’s going on if i deactivate the Wordpress SEO by Yoast plugin or mqtranslate plugin? =
+= Whats going on if i deactivate the Wordpress SEO by Yoast plugin or mqtranslate plugin? =
 
 The plugin depends on these modules or plugins for a correct behaviour because the plugin overwrite some classes to add functionality. 
 If you deactive one (or both) plugins, the Wordpress SEO integration will try load the plugins, but this could cause unpredictable behaviour.
@@ -46,17 +46,19 @@ Ive open a project in my github profile. Feel free to fork and change the code.
 
 == Changelog ==
 
-= 0.1 =
-* Realeased Alpha.
+= 0.1.2 =
+* Fix error load css & js
+* Add Jquery ui tabs
+* Better Sitemap: Support language
 
 = 0.1.1 =
 * Correct Jquery when updated title to avoid bug in empty page
 * Correct duplicate Bulk actions
 * Add tips to warn the users
 
-= 0.1.2 =
-* Fix error load css & js
-* Add Jquery ui tabs
+= 0.1 =
+* Realeased Alpha.
+
 
 == Upgrade Notice ==
 
