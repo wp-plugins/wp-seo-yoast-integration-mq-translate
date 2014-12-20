@@ -9,7 +9,7 @@
  * License: GPL2
  */
 
-define('IYWSM', 'wp-seo-yoast-integration-mqtranslate');
+define('IYWSM', 'wp-seo-yoast-integration-mq-translate');
 define('IYWSM_PATH', dirname(__FILE__)); // Path of the module
 define('PLUGINS_PATH', dirname(IYWSM_PATH)); // PLugins directory
 define('IYWSM_VERSION', "0.1.2" );
