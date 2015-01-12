@@ -46,6 +46,9 @@ Ive open a project in my github profile. Feel free to fork and change the code.
 
 == Changelog ==
 
+= 0.1.3 =
+* Delete duplicate folder with old version
+
 = 0.1.2 =
 * Fix error load css & js
 * Add Jquery ui tabs
