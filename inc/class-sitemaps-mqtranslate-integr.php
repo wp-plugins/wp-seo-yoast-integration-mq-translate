@@ -267,6 +267,7 @@ if ( ! class_exists( 'WPSEO_Sitemaps_Mqtranslate_Integr' ) ) {
 			$caching = apply_filters( 'wpseo_enable_xml_sitemap_transient_caching', true );
 
 			if ( $caching ) {
+				do_action('wpseo_sitemap_stylesheet_cache_' . $type, $this );
 				$this->sitemap = get_transient( 'wpseo_sitemap_cache_' . $type . '_' . $this->n );
 			}
 
@@ -802,8 +803,11 @@ if ( ! class_exists( 'WPSEO_Sitemaps_Mqtranslate_Integr' ) ) {
 						$url['pri'] = apply_filters( 'wpseo_xml_sitemap_post_priority', $url['pri'], $p->post_type, $p );
 
 						$url['images'] = array();
+						
+						// return the languages of translated content
+						$url['langs'] = wp_seo_yoast_integ_available_languages($p->post_content);
 
-						$content = $p->post_content;
+						$content = wp_seo_yoast_integ_filter_content_by_lang($p->post_content, $this->current_lang );
 						$content = '<p><img src="' . $this->image_url( get_post_thumbnail_id( $p->ID ) ) . '" alt="' . $p->post_title . '" /></p>' . $content;
 
 						if ( preg_match_all( '`<img [^>]+>`', $content, $matches ) ) {
@@ -855,7 +859,7 @@ if ( ! class_exists( 'WPSEO_Sitemaps_Mqtranslate_Integr' ) ) {
 							}
 						}
 
-						if ( strpos( $p->post_content, '[gallery' ) !== false ) {
+						if ( strpos( wp_seo_yoast_integ_filter_content_by_lang ($p->post_content, $this->current_lang ), '[gallery' ) !== false ) {
 							if ( is_array( $attachments ) && $attachments !== array() ) {
 
 								foreach ( $attachments as $attachment ) {
@@ -890,7 +894,7 @@ if ( ! class_exists( 'WPSEO_Sitemaps_Mqtranslate_Integr' ) ) {
 							// Use this filter to adjust the entry before it gets added to the sitemap
 							$url = apply_filters( 'wpseo_sitemap_entry', $url, 'post', $p );
 							if ( is_array( $url ) && $url !== array() ) {
-								$output .= $this->sitemap_url( $url );
+								$output .= $this->sitemap_url( $url, true );
 								$stackedurls[] = $url['loc'];
 							}
 						}
@@ -910,6 +914,7 @@ if ( ! class_exists( 'WPSEO_Sitemaps_Mqtranslate_Integr' ) ) {
 
 			$this->sitemap = '<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" ';
 			$this->sitemap .= 'xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" ';
+			$this->sitemap .= ' xmlns:xhtml="http://www.w3.org/1999/xhtml" '; // To add languages
 			$this->sitemap .= 'xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
 			$this->sitemap .= $output;
 
@@ -1197,7 +1202,7 @@ if ( ! class_exists( 'WPSEO_Sitemaps_Mqtranslate_Integr' ) ) {
 		 *
 		 * @return string
 		 */
-		function sitemap_url( $url ) {
+		function sitemap_url( $url, $alternate = false ) {
 
 			// Create a DateTime object date in the correct timezone
 			if ( isset( $url['mod'] ) ) {
@@ -1213,6 +1218,17 @@ if ( ! class_exists( 'WPSEO_Sitemaps_Mqtranslate_Integr' ) ) {
 
 			$output = "\t<url>\n";
 			$output .= "\t\t<loc>" . $url['loc'] . "</loc>\n";
+			
+			if($alternate){
+				foreach ($this->langs as $l){
+					
+					if($l == $this->current_lang)
+						continue;
+					
+					$output .= "\t\t" . '<xhtml:link rel="alternate" hreflang="' . $l .'" href="' . qtrans_convertURL($url['loc'], $l ) . '" />' . "\n";
+				}
+			}
+			
 			$output .= "\t\t<lastmod>" . $date->format( 'c' ) . "</lastmod>\n";
 			$output .= "\t\t<changefreq>" . $url['chf'] . "</changefreq>\n";
 			$output .= "\t\t<priority>" . str_replace( ',', '.', $url['pri'] ) . "</priority>\n";
@@ -1238,6 +1254,16 @@ if ( ! class_exists( 'WPSEO_Sitemaps_Mqtranslate_Integr' ) ) {
 			
 
 			return $output;
+		}
+		
+		function language_link($langs, $url){
+			$output = '';
+			foreach($langs as $lang){
+				if ($lang == $this->current_lang )
+					continue;
+				$output .= '<xhtml:link rel="alternate" hreflang="' . $q_config['locale'][$lang] . '" href="' . qtrans_convertURL($url['loc'], $lang) . '"/>';
+			}
+			
 		}
 
 		/**

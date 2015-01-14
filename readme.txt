@@ -4,7 +4,7 @@ Donate link: http://funkydrop.net/
 Tags: integration, qtranslate, mqtranslate, seo, yoast, meta, sitemaps, sitemap, sitemaps, language, title
 Requires at least: 4.0
 Tested up to: 4.1
-Stable tag: 0.1.2
+Stable tag: 0.1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,6 +48,11 @@ Ive open a project in my github profile. Feel free to fork and change the code.
 
 = 0.1.3 =
 * Delete duplicate folder with old version
+* Fixed bug: Double counting in content made in JS function
+* Fixed bug: Add code to print description (code was missing)
+* Duplicate selector in CSS deleted
+* Fix code Html in input values
+* Add functionality: when somebody change language , the general tab is open
 
 = 0.1.2 =
 * Fix error load css & js

@@ -3,7 +3,7 @@
  * Plugin Name: Integration of Yoast wordpress SEO module with mqtranslate module
  * Plugin URI: http://wordpress.org
  * Description: This module has the aim to make compatible the wordpress SEO by Yoast and mqtranslate module.
- * Version: 0.1.2
+ * Version: 0.1.3
  * Author: Koldo Gonzalez (rufein)
  * Author URI: http:/funkydrop.net
  * License: GPL2
@@ -12,7 +12,7 @@
 define('IYWSM', 'wp-seo-yoast-integration-mq-translate');
 define('IYWSM_PATH', dirname(__FILE__)); // Path of the module
 define('PLUGINS_PATH', dirname(IYWSM_PATH)); // PLugins directory
-define('IYWSM_VERSION', "0.1.2" );
+define('IYWSM_VERSION', "0.1.3" );
 
 
 /******************************

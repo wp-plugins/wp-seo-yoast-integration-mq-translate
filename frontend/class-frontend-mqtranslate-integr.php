@@ -139,6 +139,25 @@ if ( ! class_exists( 'WPSEO_Frontend_mqtranslate_intgr' ) && class_exists( 'WPSE
 				}
 				$metadesc = wpseo_replace_vars( $template, $term );
 			}
+			
+			/**
+			 * Filter: 'wpseo_metadesc' - Allow changing the WP SEO meta description sentence.
+			 *
+			 * @api string $metadesc The description sentence.
+			 */
+			
+			
+			$metadesc = apply_filters( 'wpseo_metadesc', trim( $metadesc ) );
+			
+			if ( $echo !== false ) {
+				if ( is_string( $metadesc ) && $metadesc !== '' ) {
+					echo '<meta name="description" content="' . esc_attr( strip_tags( stripslashes( $metadesc ) ) ) . '"/>' . "\n";
+				} elseif ( current_user_can( 'manage_options' ) && is_singular() ) {
+					echo '<!-- ' . __( 'Admin only notice: this page doesn\'t show a meta description because it doesn\'t have one, either write it for this page specifically or go into the SEO -> Titles menu and set up a template.', 'wordpress-seo' ) . ' -->' . "\n";
+				}
+			} else {
+				return $metadesc;
+			}
 		}
 		
 		public function get_metadesc($metadesc){

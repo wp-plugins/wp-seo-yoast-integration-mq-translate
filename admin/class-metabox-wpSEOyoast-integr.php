@@ -288,7 +288,7 @@ if ( class_exists( 'WPSEO_Metabox' ) && ! class_exists( 'WPSEO_Metabox_wpSEOyoas
 			  	if ( $placeholder !== '' ) {
 			  		$placeholder = ' placeholder="' . esc_attr( $placeholder ) . '"';
 			  	}
-			  	$content .= '<input type="text"' . $placeholder . '" id="' . $esc_form_key . '" ' . $ac . 'name="' . $esc_form_key . '" value="' . esc_attr( $meta_value ) . '" class="large-text' . $class . '"/><br />';
+			  	$content .= '<input type="text"' . $placeholder . ' id="' . $esc_form_key . '" ' . $ac . 'name="' . $esc_form_key . '" value="' . esc_attr( $meta_value ) . '" class="large-text' . $class . '"/><br />';
 			  	break;
 		
 			  case 'textarea':
